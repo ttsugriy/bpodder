@@ -12,6 +12,7 @@ mkdir -p "$podsdir"
 
 for podcast in $( cat $rssconf )
 do
+    skipall=0
     poddir=$(echo $podcast | sed 's/\/.*//')
     mkdir -p "$podsdir/$poddir"
     cd "$podsdir/$poddir"
@@ -19,6 +20,12 @@ do
     do
         if ! grep $url $db 2> /dev/null
         then
+            if [ $skipall = 1 ]
+            then
+                echo "Skipping $url"
+                echo $url >> $db
+                continue
+            fi
             clear
             echo "Select action for $url "
             PS3="action? "
