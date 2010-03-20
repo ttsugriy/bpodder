@@ -4,12 +4,15 @@ clear
 OPTIONS="Download Skip Abort"
 db="podcast.log"
 podsdir=~/Podcasts
+xsltempl=rss.xsl
+rssconf=rss.conf
+
 
 mkdir -p "$podsdir"
 
-for podcast in $(cat rss.conf)
+for podcast in $( cat $rssconf )
 do
-    for url in $(curl $podcast | uniq --unique | xsltproc rss.xsl -)
+    for url in $(curl $podcast | uniq --unique | xsltproc $rsstempl -)
     do
         if ! grep $url $db 2> /dev/null
         then
