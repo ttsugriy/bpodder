@@ -2,10 +2,17 @@
 
 Bash script for rss-based podcasts downloading
 
+== Requirements
+
+* bash
+* curl
+* xslproc (part of the libxml2)
+* wget
+
 == Install
 
 Just unpack all the files in the project into preferred destination
-For convinience you can grant executable permissions
+For convenience you can grant executable permissions
     chmod +x bpodder.sh
 
 == Usage
@@ -14,7 +21,7 @@ Add url of your favourite rss into rss.conf file
     echo myfavourite_url >> rss.conf
 Start script
     ./bpodder.sh
-You'll be prompted for actions you are allowed to apply for every podcast you hanven't already downloaded.
+You'll be prompted for actions you are allowed to apply for every podcast you haven't already downloaded.
 
 == LICENSE
 
